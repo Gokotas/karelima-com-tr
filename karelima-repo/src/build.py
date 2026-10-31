@@ -4,6 +4,9 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from content import *
 from pages_hizmet import PAGES_HIZMET
 from pages_sektor import PAGES_SEKTOR, PAGE_FIYAT
+from pages_ek import PAGES_HIZMET2, PAGES_SEKTOR2
+PAGES_HIZMET = PAGES_HIZMET + PAGES_HIZMET2
+PAGES_SEKTOR = PAGES_SEKTOR + PAGES_SEKTOR2
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ROOT, '..', 'dist')
