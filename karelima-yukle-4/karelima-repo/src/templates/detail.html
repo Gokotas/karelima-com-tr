@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% from "macros.html" import check, icon, crumbs, cta, faq %}
+{% block content %}
+<section class="page-hero"><div class="wrap">
+{{ crumbs(page.crumbs) }}
+<div class="split">
+<div>
+<span class="eyebrow">{{ d.eyebrow }}</span>
+<h1 class="h1" style="font-size:clamp(34px,4.4vw,52px)">{{ d.h1 }}</h1>
+<p class="answer">{{ d.answer }}</p>
+<div class="facts">{% for f in d.facts %}<span>{{ f }}</span>{% endfor %}</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px"><a class="btn btn-primary" href="/teklif-al/" data-ev="cta_click">Teklif Alın</a><a class="btn btn-ghost" href="tel:+908504803873" data-ev="phone_click">0850 480 38 73</a></div>
+</div>
+<div>{% include d.illus %}</div>
+</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="head"><span class="eyebrow">Kapsam</span><h2 class="h2">{{ d.tasks_title }}</h2>{% if d.tasks_sub %}<p class="sub">{{ d.tasks_sub }}</p>{% endif %}</div>
+<div class="grid g-auto">
+{% for t in d.tasks %}<article class="card">{{ icon(t.icon) }}<h3 class="h3">{{ t.name }}</h3><p>{{ t.text }}</p></article>
+{% endfor %}
+</div>
+{% if d.table %}<h2 class="h3" style="margin:48px 0 16px;font-size:22px">{{ d.table.title }}</h2>
+<div class="tbl-wrap"><table class="tbl"><thead><tr>{% for h in d.table.head %}<th scope="col">{{ h }}</th>{% endfor %}</tr></thead>
+<tbody>{% for r in d.table.rows %}<tr>{% for c in r %}{% if loop.first %}<th scope="row">{{ c }}</th>{% else %}<td>{{ c }}</td>{% endif %}{% endfor %}</tr>{% endfor %}</tbody></table></div>{% endif %}
+{% if d.photos %}<div class="photos{% if d.photos|length == 1 %} one{% endif %}">{% for ph in d.photos %}<figure class="photo"><picture><source type="image/webp" srcset="/assets/foto/{{ ph.src }}-800.webp 800w, /assets/foto/{{ ph.src }}-1200.webp 1200w" sizes="{% if d.photos|length == 1 %}(max-width:1200px) 100vw, 1120px{% else %}(max-width:900px) 100vw, 560px{% endif %}"><img src="/assets/foto/{{ ph.src }}-1200.jpg" width="1200" height="675" alt="{{ ph.alt }}" loading="lazy" decoding="async"></picture><figcaption>{{ ph.cap }} <span>Temsili görsel</span></figcaption></figure>{% endfor %}</div>{% endif %}
+</div></section>
+
+<section class="section bg-soft"><div class="wrap">
+<div class="head"><span class="eyebrow">İşleyiş</span><h2 class="h2">{{ d.flow_title }}</h2></div>
+<ol class="steps">
+{% for s in d.flow %}<li><span class="n{% if loop.last %} last{% endif %}">{{ loop.index }}</span><h3>{{ s.name }}</h3><p>{{ s.text }}</p></li>
+{% endfor %}
+</ol>
+</div></section>
+
+<section class="section"><div class="wrap split" style="align-items:flex-start">
+<div class="prose" style="flex:2 1 560px">
+{% for b in d.qa %}<h2 class="h2" style="font-size:clamp(24px,2.6vw,30px);margin-top:{{ '0' if loop.first else '40px' }}">{{ b.q }}</h2>
+{% for p in b.p %}<p>{{ p }}</p>{% endfor %}
+{% endfor %}
+</div>
+<aside style="flex:1 1 320px;display:flex;flex-direction:column;gap:16px">
+{% if d.law %}<div class="law"><b>{{ d.law.title }}</b>{{ d.law.text }}</div>{% endif %}
+<div class="card-soft"><b>Neden Karelima?</b>
+<ul class="checks" style="margin-top:12px">{% for w in d.why %}<li>{{ check() }}<span>{{ w }}</span></li>{% endfor %}</ul></div>
+</aside>
+</div></section>
+
+<section class="section bg-soft"><div class="wrap split" style="align-items:flex-start">
+<div style="flex:1 1 320px"><span class="eyebrow">Sık sorulanlar</span><h2 class="h2">{{ d.faq_title }}</h2></div>
+<div style="flex:2 1 560px">{{ faq(d.faq) }}</div>
+</div></section>
+
+<section class="section-tight"><div class="wrap">
+<b style="display:block;margin-bottom:14px">İlgili sayfalar</b>
+<div class="related">{% for r in d.related %}<a href="{{ r.url }}">{{ r.name }}</a>{% endfor %}</div>
+</div></section>
+
+{{ cta(d.cta_title, d.cta_text) }}
+{% endblock %}
