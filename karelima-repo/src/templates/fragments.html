@@ -33,7 +33,7 @@
 {% macro contact(site) -%}
 <div class="grid g-auto">
 <div class="card"><b>Telefon</b><p><a href="tel:{{ site.phone_href }}" data-ev="phone_click" style="font-size:20px;font-weight:800;text-decoration:none">{{ site.phone }}</a></p><p>7 gün 24 saat</p></div>
-<div class="card"><b>E-posta</b><p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p></div>
+<div class="card"><b>E-posta</b><p><a href="mailto:{{ site.email }}" data-ev="email_click">{{ site.email }}</a></p></div>
 <div class="card"><b>Adres</b><p>{{ site.address }}</p><p><a href="https://www.google.com/maps/search/?api=1&query=SUNUCU+Plaza+Konak+%C4%B0zmir" rel="noopener">Haritada göster →</a></p></div>
 </div>
 <p style="margin-top:32px"><a class="btn btn-primary" href="/teklif-al/" data-ev="cta_click">Teklif formunu doldurun</a></p>
@@ -57,26 +57,32 @@
 <h2>3. Hukuki sebep</h2>
 <p>6698 sayılı Kişisel Verilerin Korunması Kanunu'nun 5. maddesindeki bir sözleşmenin kurulmasıyla doğrudan ilgili olması, hukuki yükümlülüğün yerine getirilmesi ve meşru menfaat hukuki sebepleri.</p>
 <h2>4. Verileri kimlerle paylaşıyoruz?</h2>
-<p>Verileriniz yalnızca yukarıdaki amaçlar için, hizmet aldığımız barındırma ve e-posta sağlayıcıları ile yasal olarak yetkili kamu kurumlarıyla paylaşılabilir.</p>
+<p>Verileriniz yalnızca yukarıdaki amaçlar için; hizmet aldığımız barındırma, e-posta ve bulut tabanlı tablo hizmeti sağlayıcıları ile yasal olarak yetkili kamu kurumlarıyla paylaşılabilir. Teklif formu kayıtları ve bildirim e-postaları Google hizmetlerinde saklanır; bu sağlayıcının sunucuları yurt dışında bulunabilir. Yurt dışına aktarım KVKK'nın 9. maddesindeki usul ve şartlara uygun şekilde yapılır.</p>
+<h2>4a. Çerezler ve ölçüm</h2>
+<p>İzin vermeniz halinde, web sitesi kullanımını ölçmek için Google Analytics ve Google Etiket Yöneticisi aracılığıyla çerezler kullanılır. Bu işleme açık rızanıza dayanır; tercihinizi sayfanın altındaki "Çerez tercihleri" bağlantısından her zaman değiştirebilirsiniz.</p>
 <h2>5. Saklama süresi</h2>
 <p>Teklif süreci sonuçlanmazsa verileriniz talebinizden itibaren en fazla 2 yıl saklanır, ardından silinir, yok edilir veya anonim hale getirilir.</p>
 <h2>6. Haklarınız</h2>
 <p>KVKK'nın 11. maddesi uyarınca verilerinizin işlenip işlenmediğini öğrenme, bilgi talep etme, düzeltilmesini ya da silinmesini isteme ve itiraz etme haklarına sahipsiniz. Başvurularınızı {{ site.email }} adresine iletebilirsiniz.</p>
-<p style="font-size:14px;color:var(--muted)">Son güncelleme: Kasım 2026</p>
+<p style="font-size:14px;color:var(--muted)">Son güncelleme: 31 Ekim 2026</p>
 </div>
 {%- endmacro %}
 
 {% macro privacy(site) -%}
 <div class="legal-text">
 <h2>Çerezler</h2>
-<p>karelima.com.tr yalnızca sitenin çalışması için gerekli teknik çerezleri kullanır. Ölçüm ya da reklam amaçlı çerezler eklendiğinde bu sayfa güncellenecek ve sizden ayrıca onay alınacaktır.</p>
+<p>karelima.com.tr'de üç tür çerez ve benzeri teknoloji kullanılır:</p>
+<ul><li><b>Zorunlu:</b> Sitenin çalışması ve çerez tercihinizin hatırlanması için gereklidir (tarayıcınızdaki "klm_consent" kaydı). Onay gerektirmez.</li>
+<li><b>Analitik:</b> Google Analytics 4, Google Etiket Yöneticisi üzerinden ziyaret edilen sayfaları ve form gönderimi gibi etkileşimleri ölçer. Yalnızca onay vermeniz halinde çalışır.</li>
+<li><b>Reklam:</b> Google Ads reklamlarının ölçümü için kullanılabilir. Yalnızca onay vermeniz halinde çalışır.</li></ul>
+<p>Onay vermediğiniz sürece analitik ve reklam çerezleri yazılmaz. Tercihinizi sayfanın altındaki "Çerez tercihleri" bağlantısından istediğiniz zaman değiştirebilirsiniz.</p>
 <h2>Formlar</h2>
 <p>Formlarda paylaştığınız bilgiler <a href="/kvkk-aydinlatma-metni/">KVKK Aydınlatma Metni</a>'nde belirtilen amaçlarla işlenir. Sitemiz üzerinden ödeme bilgisi alınmaz.</p>
 <h2>Bağlantılar</h2>
 <p>Sitemiz iş ortaklarımızın sitelerine bağlantı içerebilir. Bu sitelerin gizlilik uygulamalarından ilgili site sahipleri sorumludur.</p>
 <h2>İletişim</h2>
 <p>Sorularınız için {{ site.email }} adresine yazabilirsiniz.</p>
-<p style="font-size:14px;color:var(--muted)">Son güncelleme: Kasım 2026</p>
+<p style="font-size:14px;color:var(--muted)">Son güncelleme: 31 Ekim 2026</p>
 </div>
 {%- endmacro %}
 

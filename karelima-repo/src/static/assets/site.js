@@ -3,6 +3,46 @@
   window.dataLayer = window.dataLayer || [];
   function track(ev, extra) { try { window.dataLayer.push(Object.assign({ event: ev }, extra || {})); } catch (e) {} }
 
+  // Çerez onayı (Consent Mode v2)
+  var cc = document.getElementById('cc');
+  function readConsent() { try { return JSON.parse(localStorage.getItem('klm_consent') || 'null'); } catch (e) { return null; } }
+  function saveConsent(a, m) {
+    try { localStorage.setItem('klm_consent', JSON.stringify({ a: a ? 1 : 0, m: m ? 1 : 0, t: Date.now() })); } catch (e) {}
+    if (typeof gtag === 'function') gtag('consent', 'update', { analytics_storage: a ? 'granted' : 'denied', ad_storage: m ? 'granted' : 'denied', ad_user_data: m ? 'granted' : 'denied', ad_personalization: m ? 'granted' : 'denied' });
+    track('consent_update', { consent_analytics: a ? 'granted' : 'denied', consent_ads: m ? 'granted' : 'denied' });
+    if (cc) cc.hidden = true;
+  }
+  if (cc) {
+    var opts = document.getElementById('cc-opts'), ca = document.getElementById('cc-a'), cm = document.getElementById('cc-m');
+    var prefsBtn = cc.querySelector('[data-cc="prefs"]');
+    if (!readConsent()) cc.hidden = false;
+    cc.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('[data-cc]'); if (!b) return;
+      var k = b.getAttribute('data-cc');
+      if (k === 'accept') saveConsent(true, true);
+      else if (k === 'reject') saveConsent(false, false);
+      else if (k === 'prefs') {
+        if (opts.hidden) { var c = readConsent() || {}; ca.checked = !!c.a; cm.checked = !!c.m; opts.hidden = false; prefsBtn.textContent = 'Seçimi kaydet'; }
+        else saveConsent(ca.checked, cm.checked);
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('[data-cc-open]')) { opts.hidden = true; prefsBtn.textContent = 'Tercihler'; cc.hidden = false; }
+    });
+  }
+
+  // Kaynak bilgisi (ilk giriş sayfası, UTM, gclid) — yalnızca bu oturum için
+  var attr = {};
+  try {
+    attr = JSON.parse(sessionStorage.getItem('klm_attr') || 'null');
+    if (!attr) {
+      var q = new URLSearchParams(location.search); attr = { giris_sayfasi: location.pathname };
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'gclid'].forEach(function (k) { if (q.get(k)) attr[k] = q.get(k).slice(0, 200); });
+      if (!attr.utm_source && document.referrer && document.referrer.indexOf(location.host) < 0) attr.utm_source = document.referrer.split('/')[2] || '';
+      sessionStorage.setItem('klm_attr', JSON.stringify(attr));
+    }
+  } catch (e) { attr = {}; }
+
   // Menü
   var btn = document.querySelector('.menu-btn'), nav = document.getElementById('nav');
   if (btn && nav) btn.addEventListener('click', function () {
@@ -100,6 +140,8 @@
         if (!f.value.trim()) { show('Lütfen zorunlu alanları doldurun.', false); f.focus(); return; }
       }
       if (!form.eposta.checkValidity()) { show('Lütfen geçerli bir e-posta adresi yazın.', false); form.eposta.focus(); return; }
+      var tel = form.telefon.value.replace(/\D/g, '');
+      if (tel.length < 10 || tel.length > 13) { show('Lütfen telefon numaranızı alan koduyla birlikte yazın.', false); form.telefon.focus(); return; }
       var hizmet = Array.prototype.map.call(form.querySelectorAll('input[name="hizmet"]:checked'), function (x) { return x.value; });
       if (!hizmet.length) { show('Lütfen en az bir hizmet seçin.', false); return; }
       if (!form.kvkk.checked) { show('Devam etmek için KVKK Aydınlatma Metni onayını işaretleyin.', false); return; }
@@ -108,17 +150,19 @@
         eposta: form.eposta.value.trim(), hizmet: hizmet.join(', '), sektor: form.sektor.value, hacim: form.hacim.value,
         baslangic: form.baslangic.value, mesaj: form.mesaj.value.trim(), sayfa: location.href, zaman: new Date().toISOString()
       };
+      Object.keys(attr || {}).forEach(function (k) { data[k] = attr[k]; });
       var endpoint = form.getAttribute('data-endpoint');
       var button = form.querySelector('button[type="submit"]');
       function done() {
-        track('generate_lead', { form_name: 'teklif', sektor: data.sektor });
+        track('generate_lead', { form_name: 'teklif', sektor: data.sektor, hizmet: data.hizmet });
         form.reset();
         show('Teşekkürler, talebiniz bize ulaştı. Ekibimiz sizi en kısa sürede arayacak.', true);
       }
       if (endpoint) {
         button.disabled = true;
         fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) })
-          .then(function (r) { if (!r.ok) throw new Error(r.status); done(); })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+          .then(function (j) { if (!j || !j.ok) throw new Error((j && j.error) || 'hata'); done(); })
           .catch(function () { show('Gönderilemedi. Lütfen 0850 480 38 73 numarasından bize ulaşın.', false); })
           .then(function () { button.disabled = false; });
       } else {

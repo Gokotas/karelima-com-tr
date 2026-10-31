@@ -2,6 +2,8 @@
 import os, shutil, json, datetime
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from content import *
+from pages_hizmet import PAGES_HIZMET
+from pages_sektor import PAGES_SEKTOR, PAGE_FIYAT
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ROOT, '..', 'dist')
@@ -39,7 +41,7 @@ def service_ld(name, desc, path, audience=None):
     if audience: d['audience'] = {'@type': 'BusinessAudience', 'name': audience}
     return d
 
-SECTORS_LIVE = [dict(name='Hastane çağrı merkezi', url='/sektorler/saglik/hastane-cagri-merkezi/')]
+SECTORS_LIVE = [dict(name='Hastane çağrı merkezi', url='/sektorler/saglik/hastane-cagri-merkezi/')] + [dict(name=p['name'], url=p['path']) for p in PAGES_SEKTOR]
 SECTORS_ALL = ['Sağlık (hastane, klinik)', 'Otomotiv (bayi, servis)', 'E-ticaret ve perakende', 'Telekom ve abonelik', 'Eğitim', 'Gayrimenkul', 'Sigorta', 'Turizm ve otelcilik', 'Teknoloji ve yazılım', 'Teknik servis', 'Restoran ve franchise', 'Enerji', 'Lojistik ve kargo', 'Finans']
 COMMON = dict(site=S, services=SERVICES, sectors_live=SECTORS_LIVE, sectors_all=SECTORS_ALL)
 PAGES = []
@@ -88,10 +90,8 @@ render('hub.html', '/hizmetler/', P(title='Çağrı Merkezi Hizmetleri | Karelim
 # Sektörler hub
 scards = []
 for s in SECTORS:
-    url = None; link = None
-    for ch in s.get('children', []):
-        if ch.get('live'): url = '/sektorler/%s/%s/' % (s['slug'], ch['slug']); link = ch['name']
-    scards.append(dict(icon=s['icon'], name=s['name'], text=s['text'], sub=s['sub'], url=url, link=link))
+    links = [dict(url='/sektorler/%s/%s/' % (s['slug'], ch['slug']), name=ch['name']) for ch in s.get('children', []) if ch.get('live')]
+    scards.append(dict(icon=s['icon'], name=s['name'], text=s['text'], sub=s['sub'], url=links[0]['url'] if links else None, links=links))
 cr = [dict(name='Ana sayfa', url='/'), dict(name='Sektörler', url='/sektorler/')]
 render('hub.html', '/sektorler/', P(title='Sektörlere Özel Çağrı Merkezi Çözümleri | Karelima',
     description='Sağlık, otomotiv, e-ticaret, eğitim, turizm ve daha fazlası için sektörün diline ve mevzuatına uygun çağrı merkezi hizmeti.',
@@ -113,6 +113,29 @@ render('detail.html', '/sektorler/saglik/hastane-cagri-merkezi/', P(title='Hasta
     description='Hastaneler için 7/24 randevu hattı: randevu alma, hatırlatma ve teyit aramaları, mesai dışı hat. KVKK uyumlu süreç, kurulum 10 iş günü.',
     section='sektorler', crumbs=cr, og_image='saglik-randevu',
     jsonld=[service_ld('Hastane çağrı merkezi ve randevu yönetimi', d['answer'], '/sektorler/saglik/hastane-cagri-merkezi/', 'Hastaneler ve sağlık kuruluşları'), crumbs_ld([c for i, c in enumerate(cr) if i != 2]), faq_ld(d['faq'])]), d=d)
+
+# Yeni hizmet sayfaları
+for pg in PAGES_HIZMET:
+    d = pg['d']
+    cr = [dict(name='Ana sayfa', url='/'), dict(name='Hizmetler', url='/hizmetler/'), dict(name=pg['name'], url=pg['path'])]
+    render('detail.html', pg['path'], P(title=pg['title'], description=pg['description'], section='hizmetler', crumbs=cr, og_image=pg['og_image'],
+        jsonld=[service_ld(pg['name'], d['answer'], pg['path'], pg.get('audience')), crumbs_ld(cr), faq_ld(d['faq'])]), d=d)
+
+# Yeni sektör sayfaları
+for pg in PAGES_SEKTOR:
+    d = pg['d']
+    cr = [dict(name='Ana sayfa', url='/'), dict(name='Sektörler', url='/sektorler/'), dict(name=pg['sector'], url='/sektorler/'), dict(name=pg['name'], url=pg['path'])]
+    render('detail.html', pg['path'], P(title=pg['title'], description=pg['description'], section='sektorler', crumbs=cr, og_image=pg['og_image'],
+        jsonld=[service_ld(pg['name'], d['answer'], pg['path'], pg.get('audience')), crumbs_ld([c for i, c in enumerate(cr) if i != 2]), faq_ld(d['faq'])]), d=d)
+
+# Rehber: fiyatlar
+pg = PAGE_FIYAT; d = pg['d']
+cr = [dict(name='Ana sayfa', url='/'), dict(name=pg['name'], url=pg['path'])]
+article = {'@context': 'https://schema.org', '@type': 'Article', 'headline': d['h1'], 'description': pg['description'], 'inLanguage': 'tr-TR',
+           'url': S['url'] + pg['path'], 'mainEntityOfPage': S['url'] + pg['path'], 'image': S['url'] + '/assets/img/%s-1400.jpg' % pg['og_image'],
+           'author': {'@id': ORG_ID}, 'publisher': {'@id': ORG_ID}, 'dateModified': TODAY}
+render('detail.html', pg['path'], P(title=pg['title'], description=pg['description'], crumbs=cr, og_image=pg['og_image'], priority='0.8',
+    jsonld=[article, crumbs_ld(cr), faq_ld(d['faq'])]), d=d)
 
 # Teklif al
 cr = [dict(name='Ana sayfa', url='/'), dict(name='Teklif alın', url='/teklif-al/')]
@@ -177,11 +200,16 @@ llms = """# Karelima
 - [Ana sayfa]({url}/): Hizmetler, sektörler, çalışma modeli, sık sorulanlar
 - [Hizmetler]({url}/hizmetler/)
 - [Gelen çağrı yönetimi]({url}/hizmetler/gelen-cagri-yonetimi/)
+{hizmet}
 - [Sektörler]({url}/sektorler/)
 - [Hastane çağrı merkezi ve randevu yönetimi]({url}/sektorler/saglik/hastane-cagri-merkezi/)
+{sektor}
+- [Çağrı merkezi hizmeti fiyatları rehberi]({url}/rehber/cagri-merkezi-hizmeti-fiyatlari/)
 - [Hakkımızda]({url}/hakkimizda/)
 - [Teklif alın]({url}/teklif-al/)
 - [İletişim]({url}/iletisim/)
-""".format(partner=S['partner_site'], **S)
+""".format(partner=S['partner_site'],
+    hizmet='\n'.join('- [%s](%s%s): %s' % (p['name'], S['url'], p['path'], p['description']) for p in PAGES_HIZMET),
+    sektor='\n'.join('- [%s](%s%s): %s' % (p['name'], S['url'], p['path'], p['description']) for p in PAGES_SEKTOR), **S)
 open(os.path.join(DIST, 'llms.txt'), 'w', encoding='utf-8').write(llms)
 print('OK', len(PAGES), 'sayfa')

@@ -24,7 +24,7 @@
 <div class="field"><label for="eposta">Kurumsal e-posta *</label><input id="eposta" name="eposta" type="email" required autocomplete="email"></div>
 </div>
 <fieldset><legend class="legend">İhtiyacınız olan hizmet *</legend>
-<div class="opts">{% for s in services %}<label class="opt"><input type="checkbox" name="hizmet" value="{{ s.name }}"{% if loop.index==2 %} checked{% endif %}><span>{{ s.name }}</span></label>{% endfor %}<label class="opt"><input type="checkbox" name="hizmet" value="Diğer"><span>Diğer</span></label></div>
+<div class="opts">{% for s in services %}<label class="opt"><input type="checkbox" name="hizmet" value="{{ s.name }}"><span>{{ s.name }}</span></label>{% endfor %}<label class="opt"><input type="checkbox" name="hizmet" value="Diğer"><span>Diğer</span></label></div>
 </fieldset>
 <div class="field"><label for="sektor">Sektörünüz *</label><select id="sektor" name="sektor" required><option value="">Seçiniz</option>{% for s in sectors_all %}<option>{{ s }}</option>{% endfor %}<option>Diğer</option></select></div>
 <div class="row">
@@ -33,7 +33,7 @@
 </div>
 <div class="field"><label for="mesaj">Kısaca projeniz</label><textarea id="mesaj" name="mesaj" rows="4" placeholder="Hangi hattı devretmek istiyorsunuz, çalışma saatleri, kullandığınız randevu ya da CRM sistemi vb."></textarea></div>
 <input class="hp" type="text" name="web_sitesi" tabindex="-1" autocomplete="off" aria-hidden="true">
-<label class="consent"><input type="checkbox" name="kvkk" required><span><a href="/kvkk-aydinlatma-metni/" target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>'ni okudum. Teklif hazırlanması amacıyla benimle iletişime geçilmesini kabul ediyorum. *</span></label>
+<label class="consent"><input type="checkbox" name="kvkk" required><span><a href="/kvkk-aydinlatma-metni/" target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>'ni okudum; talebim için benimle iletişime geçileceğini biliyorum. *</span></label>
 <div class="form-msg" id="form-msg" role="status" hidden></div>
 <button class="btn btn-primary" type="submit" style="width:100%">Teklif talebimi gönder</button>
 </form>

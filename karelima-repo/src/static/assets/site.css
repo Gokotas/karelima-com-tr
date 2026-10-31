@@ -176,3 +176,15 @@ fieldset{border:0;margin:0;padding:0}
 .site-header .brand span{font-size:20px}
 .site-header .btn-sm{padding:10px 14px;font-size:14px}
 }
+
+/* tablo */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r)}.tbl{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}.tbl th,.tbl td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}.tbl thead th{background:var(--soft);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}.tbl tbody tr:last-child th,.tbl tbody tr:last-child td{border-bottom:0}.tbl tbody th{font-weight:700;color:var(--ink)}.tbl td{color:var(--ink-2)}
+
+/* çerez bandı */
+.cc{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:720px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:0 12px 40px rgba(11,21,36,.18);padding:20px 22px;font-size:14px;color:var(--ink-2)}
+.cc b{display:block;color:var(--ink);font-size:15px;margin-bottom:4px}.cc p{margin:0}
+.cc-opts{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px}.cc-opts label{display:flex;gap:6px;align-items:center;color:var(--ink)}
+.cc-btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:14px}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
+.legal-text ul{padding-left:20px}
+[hidden]{display:none!important}

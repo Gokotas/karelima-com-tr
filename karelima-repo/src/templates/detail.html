@@ -21,6 +21,9 @@
 {% for t in d.tasks %}<article class="card">{{ icon(t.icon) }}<h3 class="h3">{{ t.name }}</h3><p>{{ t.text }}</p></article>
 {% endfor %}
 </div>
+{% if d.table %}<h2 class="h3" style="margin:48px 0 16px;font-size:22px">{{ d.table.title }}</h2>
+<div class="tbl-wrap"><table class="tbl"><thead><tr>{% for h in d.table.head %}<th scope="col">{{ h }}</th>{% endfor %}</tr></thead>
+<tbody>{% for r in d.table.rows %}<tr>{% for c in r %}{% if loop.first %}<th scope="row">{{ c }}</th>{% else %}<td>{{ c }}</td>{% endif %}{% endfor %}</tr>{% endfor %}</tbody></table></div>{% endif %}
 </div></section>
 
 <section class="section bg-soft"><div class="wrap">
