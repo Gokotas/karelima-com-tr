@@ -5,7 +5,7 @@ Karelima Bilişim kurumsal çağrı merkezi sitesi. Statik site, Windows IIS üz
 
 ## Nasıl çalışır?
 
-1. `src/` içindeki kaynak (Python + Jinja2) `main` dalına gönderilir.
+1. `karelima-repo/src/` içindeki kaynak (Python + Jinja2) `main` dalına gönderilir.
 2. GitHub Actions (`.github/workflows/build.yml`) siteyi derler, görselleri ve fontları
    `karelima-com-tr-site.zip` içinden ekler ve hazır siteyi `site` dalına yazar.
 3. Sunucudaki zamanlanmış görev ("karelima-com-tr guncelleme", SYSTEM, 10 dakikada bir)
@@ -18,7 +18,7 @@ Sunucu konsoluna girmeye gerek yoktur. Güncelleme = `main` dalına commit.
 
 ```
 pip install jinja2
-python src/build.py      # çıktı: dist/
+python karelima-repo/src/build.py      # çıktı: karelima-repo/dist/
 ```
 
 ## Sunucu
@@ -30,8 +30,9 @@ python src/build.py      # çıktı: dist/
 - Yedekler (son 10): `C:\inetpub\karelima-com-tr\deploy\backups\`
 - Geri dönüş: yedek zip'i `wwwroot` içine açın veya `main`'de önceki commit'i geri alın.
 - Güncelleyiciyi ilk kurulum: `deploy/install-updater.ps1` (yönetici PowerShell, bir kez).
+- `deploy.ps1` (kökte): ilk elle kurulumda kullanılan betik, artık gerekmez.
 
 ## Görseller
 
 Fotoğraflar ve fontlar şimdilik `karelima-com-tr-site.zip` içinde (`assets/img`, `assets/fonts`).
-Yeni fotoğraf eklerken bu zip güncellenmeli ya da `src/static/assets/img/` altına eklenmeli.
+Yeni fotoğraf eklerken bu zip güncellenmeli ya da `karelima-repo/src/static/assets/img/` altına eklenmeli.
