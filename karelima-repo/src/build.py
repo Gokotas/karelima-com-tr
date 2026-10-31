@@ -102,6 +102,27 @@ render('hub.html', '/sektorler/', P(title='Sektörlere Özel Çağrı Merkezi Ç
     h=dict(eyebrow='Sektörler', h1='Sektörünüzün dilini bilen çağrı merkezi', answer='Her sektörün çağrı akışı, mevzuatı ve hassasiyetleri farklıdır. Karelima, temsilcilerini işinize özel konuşma akışı ve eğitimle hazırlar; sağlıkta KVKK, satışta İYS gibi kurallara uygun çalışır.', cards=scards))
 
 # Gelen çağrı yönetimi
+# Temsili fotoğraflar (Gemini ile üretildi, src/static/assets/foto/)
+PHOTOS = {
+    '/hizmetler/gelen-cagri-yonetimi/': [
+        dict(src='gelen-cagri-1', alt='Kulaklıklı müşteri temsilcisi gelen çağrıyı karşılarken', cap='Gelen çağrılar kurum dilinizle, tek kayıt sistemi üzerinden karşılanır.'),
+        dict(src='gelen-cagri-2', alt='Takım lideri canlı çağrı ekranını izlerken temsilciler müşterilerle görüşüyor', cap='Bekleme süresi ve cevaplama oranı düzenli izlenir, raporlanır.')],
+    '/hizmetler/dis-arama-ve-telesatis/': [
+        dict(src='telesatis-1', alt='Satış temsilcisi kulaklıkla dış arama yaparken', cap='Her görüşme kaydedilir, sonuçlar günlük olarak raporlanır.'),
+        dict(src='telesatis-2', alt='Takım lideri vardiya başında temsilcilere brifing veriyor', cap='Vardiya başında günün listesi ve kampanya bilgisi ekiple paylaşılır.')],
+    '/sektorler/saglik/hastane-cagri-merkezi/': [
+        dict(src='hastane-1', alt='Hastane randevu hattında çalışan temsilci randevu takvimini kullanıyor', cap='Randevu hastane sistemine işlenir, hastaya SMS ile teyit gönderilir.'),
+        dict(src='hastane-2', alt='Evinde telefonla randevu hatırlatması alan hasta', cap='Randevudan önce hatırlatma yapılır; gelemeyecek hastaya yeni saat verilir.')],
+    '/hizmetler/randevu-ve-rezervasyon-yonetimi/': [
+        dict(src='randevu-1', alt='Temsilci randevu takviminde boş saat seçerken telefonda onay mesajı görünüyor', cap='Uygun saat seçilir, müşteriye onay mesajı anında iletilir.')],
+    '/hizmetler/sanal-sekreter-ve-cagri-karsilama/': [
+        dict(src='sanal-sekreter-1', alt='Akşam saatlerinde ofiste gelen çağrıyı karşılayan temsilci', cap='Mesai sonrasında gelen çağrılar da şirketiniz adına karşılanır.')],
+}
+DETAIL_GELEN['photos'] = PHOTOS['/hizmetler/gelen-cagri-yonetimi/']
+DETAIL_HASTANE['photos'] = PHOTOS['/sektorler/saglik/hastane-cagri-merkezi/']
+for _pg in PAGES_HIZMET + PAGES_SEKTOR:
+    if _pg['path'] in PHOTOS: _pg['d']['photos'] = PHOTOS[_pg['path']]
+
 d = DETAIL_GELEN
 cr = [dict(name='Ana sayfa', url='/'), dict(name='Hizmetler', url='/hizmetler/'), dict(name='Gelen çağrı yönetimi', url='/hizmetler/gelen-cagri-yonetimi/')]
 render('detail.html', '/hizmetler/gelen-cagri-yonetimi/', P(title='Gelen Çağrı Yönetimi (Inbound) Hizmeti | Karelima',
