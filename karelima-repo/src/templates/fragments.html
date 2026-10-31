@@ -1,0 +1,85 @@
+{% macro partner(site) -%}
+<div class="grid g-auto">
+<article class="card"><h2 class="h3">Digitürk</h2><p>Karelima, 92357600 bayi koduyla Digitürk yetkili satış bayisidir. TV ve internet paketlerine abonelik başvuruları, Digitürk'ün yetkilendirdiği alan adı olan karelima.com üzerinden alınır.</p><p><a class="btn btn-primary btn-sm" href="{{ site.partner_site }}" rel="noopener">Digitürk başvurusu için karelima.com →</a></p></article>
+<article class="card"><h2 class="h3">Türksat</h2><p>Kablonet internet ve Kablo TV başvurularında Türksat'ın satış iş ortağıyız. Başvuru ve bilgi için bizi arayabilirsiniz.</p><p><a class="btn btn-ghost btn-sm" href="tel:{{ site.phone_href }}" data-ev="phone_click">{{ site.phone }}</a></p></article>
+</div>
+<div class="note" style="margin-top:24px">Bu site Digitürk, beIN CONNECT veya Türksat'ın resmi web sitesi değildir. Ticari markalar ilgili hak sahiplerine aittir. Karelima web siteleri üzerinden kredi kartı, kart şifresi veya ödeme bilgisi alınmaz.</div>
+<div class="prose" style="margin-top:48px;max-width:820px"><h2 class="h2" style="font-size:28px">Bu deneyim size ne kazandırır?</h2><p>Abonelik satışında hız ve doğruluk birlikte önemlidir: başvuru aynı gün aranmalı, bilgiler eksiksiz alınmalı, kurulum takip edilmelidir. Bu disiplini her gün kendi operasyonumuzda uyguluyoruz. Çağrı merkezi hizmeti verdiğimiz firmalar da aynı süreçten yararlanır.</p><p><a href="/hizmetler/">Çağrı merkezi hizmetlerimizi inceleyin →</a></p></div>
+{%- endmacro %}
+
+{% macro about(site) -%}
+<div class="split" style="align-items:flex-start">
+<div class="prose" style="flex:2 1 560px">
+<h2 class="h2" style="font-size:28px">Kimiz?</h2>
+<p>Karelima Bilişim, İzmir'de 9 Eylül 2021'de tescil edilmiş bir anonim şirkettir. Konak'taki operasyon merkezimizden firmaların randevu, rezervasyon, satış ve müşteri hizmetleri hatlarını yönetiyoruz.</p>
+<p>Telekom ve yayın sektöründe Digitürk ve Türksat'ın satış iş ortağı olarak her gün yüksek hacimli abonelik satışı yapıyoruz. Bu operasyondan edindiğimiz hız, kayıt ve raporlama disiplinini sağlık, otomotiv, e-ticaret ve eğitim gibi sektörlere taşıyoruz.</p>
+<h2 class="h2" style="font-size:28px;margin-top:36px">Nasıl çalışırız?</h2>
+<p>Her projede tek bir takım lideri sorumludur. Temsilcilerimiz markanıza özel eğitimden geçer; görüşmeler kaydedilir, kalite ekibi tarafından dinlenir ve puanlanır. Tüm temaslar Karelima CRM'de tutulur ve size düzenli olarak raporlanır.</p>
+</div>
+<aside class="card-soft" style="flex:1 1 320px">
+<b>Şirket bilgileri</b>
+<dl style="margin:14px 0 0;display:grid;gap:10px;font-size:15px">
+<div><dt style="color:var(--muted);font-size:13px">Ünvan</dt><dd style="margin:0">{{ site.legal_name }}</dd></div>
+<div><dt style="color:var(--muted);font-size:13px">Kuruluş</dt><dd style="margin:0">9 Eylül 2021, İzmir Ticaret Sicili</dd></div>
+<div><dt style="color:var(--muted);font-size:13px">Vergi no</dt><dd style="margin:0">{{ site.vkn }}</dd></div>
+<div><dt style="color:var(--muted);font-size:13px">MERSİS</dt><dd style="margin:0">{{ site.mersis }}</dd></div>
+<div><dt style="color:var(--muted);font-size:13px">Adres</dt><dd style="margin:0">{{ site.address }}</dd></div>
+<div><dt style="color:var(--muted);font-size:13px">Ekip</dt><dd style="margin:0">20+ kişi · 7/24 hizmet</dd></div>
+</dl>
+</aside>
+</div>
+{%- endmacro %}
+
+{% macro contact(site) -%}
+<div class="grid g-auto">
+<div class="card"><b>Telefon</b><p><a href="tel:{{ site.phone_href }}" data-ev="phone_click" style="font-size:20px;font-weight:800;text-decoration:none">{{ site.phone }}</a></p><p>7 gün 24 saat</p></div>
+<div class="card"><b>E-posta</b><p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p></div>
+<div class="card"><b>Adres</b><p>{{ site.address }}</p><p><a href="https://www.google.com/maps/search/?api=1&query=SUNUCU+Plaza+Konak+%C4%B0zmir" rel="noopener">Haritada göster →</a></p></div>
+</div>
+<p style="margin-top:32px"><a class="btn btn-primary" href="/teklif-al/" data-ev="cta_click">Teklif formunu doldurun</a></p>
+{%- endmacro %}
+
+{% macro career(site) -%}
+<div class="prose" style="max-width:820px">
+<h2 class="h2" style="font-size:28px">Neler arıyoruz?</h2>
+<ul class="checks" style="margin-bottom:20px"><li>{{ '✓' }} <span>İletişimi güçlü, sabırlı ve çözüm odaklı olmak</span></li><li>{{ '✓' }} <span>İzmir'de, operasyon merkezimizde çalışabilmek</span></li><li>{{ '✓' }} <span>Satış ya da müşteri hizmetleri deneyimi tercih sebebidir</span></li></ul>
+<p>Başvurmak için özgeçmişinizi <a href="mailto:{{ site.email }}?subject=Kariyer%20ba%C5%9Fvurusu">{{ site.email }}</a> adresine, konu satırına "Kariyer başvurusu" yazarak gönderebilirsiniz.</p>
+</div>
+{%- endmacro %}
+
+{% macro kvkk(site) -%}
+<div class="legal-text">
+<p><b>Veri sorumlusu:</b> {{ site.legal_name }} ("Karelima"), {{ site.address }} · VKN {{ site.vkn }} · {{ site.email }}</p>
+<h2>1. Hangi verileri işliyoruz?</h2>
+<p>Teklif ve iletişim formlarında paylaştığınız ad soyad, firma adı, telefon, e-posta, sektör ve talep bilgileri; web sitesini ziyaretiniz sırasında oluşan IP adresi ve teknik kayıtlar.</p>
+<h2>2. Hangi amaçlarla işliyoruz?</h2>
+<p>Teklif talebinizi değerlendirmek ve sizinle iletişime geçmek, hizmet sözleşmesi öncesi görüşmeleri yürütmek, web sitesinin güvenliğini sağlamak ve yasal yükümlülüklerimizi yerine getirmek.</p>
+<h2>3. Hukuki sebep</h2>
+<p>6698 sayılı Kişisel Verilerin Korunması Kanunu'nun 5. maddesindeki bir sözleşmenin kurulmasıyla doğrudan ilgili olması, hukuki yükümlülüğün yerine getirilmesi ve meşru menfaat hukuki sebepleri.</p>
+<h2>4. Verileri kimlerle paylaşıyoruz?</h2>
+<p>Verileriniz yalnızca yukarıdaki amaçlar için, hizmet aldığımız barındırma ve e-posta sağlayıcıları ile yasal olarak yetkili kamu kurumlarıyla paylaşılabilir.</p>
+<h2>5. Saklama süresi</h2>
+<p>Teklif süreci sonuçlanmazsa verileriniz talebinizden itibaren en fazla 2 yıl saklanır, ardından silinir, yok edilir veya anonim hale getirilir.</p>
+<h2>6. Haklarınız</h2>
+<p>KVKK'nın 11. maddesi uyarınca verilerinizin işlenip işlenmediğini öğrenme, bilgi talep etme, düzeltilmesini ya da silinmesini isteme ve itiraz etme haklarına sahipsiniz. Başvurularınızı {{ site.email }} adresine iletebilirsiniz.</p>
+<p style="font-size:14px;color:var(--muted)">Son güncelleme: Kasım 2026</p>
+</div>
+{%- endmacro %}
+
+{% macro privacy(site) -%}
+<div class="legal-text">
+<h2>Çerezler</h2>
+<p>karelima.com.tr yalnızca sitenin çalışması için gerekli teknik çerezleri kullanır. Ölçüm ya da reklam amaçlı çerezler eklendiğinde bu sayfa güncellenecek ve sizden ayrıca onay alınacaktır.</p>
+<h2>Formlar</h2>
+<p>Formlarda paylaştığınız bilgiler <a href="/kvkk-aydinlatma-metni/">KVKK Aydınlatma Metni</a>'nde belirtilen amaçlarla işlenir. Sitemiz üzerinden ödeme bilgisi alınmaz.</p>
+<h2>Bağlantılar</h2>
+<p>Sitemiz iş ortaklarımızın sitelerine bağlantı içerebilir. Bu sitelerin gizlilik uygulamalarından ilgili site sahipleri sorumludur.</p>
+<h2>İletişim</h2>
+<p>Sorularınız için {{ site.email }} adresine yazabilirsiniz.</p>
+<p style="font-size:14px;color:var(--muted)">Son güncelleme: Kasım 2026</p>
+</div>
+{%- endmacro %}
+
+{% macro notfound(site) -%}
+<p><a class="btn btn-primary" href="/">Ana sayfaya dön</a> <a class="btn btn-ghost" href="/hizmetler/" style="margin-left:8px">Hizmetler</a></p>
+{%- endmacro %}

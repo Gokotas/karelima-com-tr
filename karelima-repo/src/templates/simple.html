@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% from "macros.html" import crumbs, cta %}
+{% block content %}
+<section class="page-hero" style="padding-bottom:48px"><div class="wrap">
+{% if page.crumbs %}{{ crumbs(page.crumbs) }}{% endif %}
+{% if s.eyebrow %}<span class="eyebrow">{{ s.eyebrow }}</span>{% endif %}
+<h1 class="h1" style="font-size:clamp(32px,4vw,48px);max-width:860px">{{ s.h1 }}</h1>
+{% if s.answer %}<p class="answer">{{ s.answer }}</p>{% endif %}
+</div></section>
+<section class="section"><div class="wrap">{{ s.body | safe }}</div></section>
+{% if s.cta %}{{ cta() }}{% endif %}
+{% endblock %}

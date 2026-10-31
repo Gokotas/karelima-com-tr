@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% from "macros.html" import check, icon, picture, cta, faq %}
+{% block content %}
+<section class="hero"><div class="wrap">
+<div class="split">
+<div>
+<span class="eyebrow">İzmir merkezli dış kaynak çağrı merkezi</span>
+<h1 class="h1">Müşterilerinizin her çağrısı, markanızın sesiyle karşılansın.</h1>
+<p class="lead">Randevu, rezervasyon, satış ve müşteri hizmetleri hatlarınızı İzmir'deki eğitimli ekibimizle uçtan uca yönetiyoruz. Siz işinize odaklanın; çağrılarınız kaçmasın, müşterileriniz beklemesin.</p>
+<div class="actions"><a class="btn btn-primary" href="/teklif-al/" data-ev="cta_click">Teklif Alın</a><a class="btn btn-ghost" href="/sektorler/">Sektörünüze özel çözümler</a></div>
+</div>
+<div class="hero-media">
+{{ picture('hero-temsilci', 'Kulaklıkla müşteri görüşmesi yapan gülümseyen çağrı merkezi temsilcisi', eager=True) }}
+<div class="feed" aria-hidden="true">
+<div class="feed-head"><strong>Canlı operasyon akışı</strong><span style="display:inline-flex;align-items:center;gap:6px"><span class="pulse"></span>7/24 açık</span></div>
+<div id="feed-rows"></div>
+</div>
+</div>
+</div>
+<div class="grid g-4 stats">
+<div class="stat"><b>20+</b><span>kişilik eğitimli operasyon ekibi</span></div>
+<div class="stat"><b>2021</b><span>yılından bu yana İzmir'den hizmet</span></div>
+<div class="stat"><b>Binlerce</b><span>aylık yönetilen görüşme</span></div>
+<div class="stat"><b>7/24</b><span>kesintisiz hizmet</span></div>
+</div>
+</div></section>
+
+<section class="section" id="cozumler"><div class="wrap">
+<div class="split" style="align-items:flex-end;margin-bottom:44px;gap:24px 64px">
+<div><span class="eyebrow">Hizmetler</span><h2 class="h2">Telefondaki tüm müşteri temaslarınız için tek iş ortağı</h2></div>
+<p class="sub">Tek bir hattı devretmekle başlayabilir ya da tüm müşteri hizmetleri operasyonunuzu bize taşıyabilirsiniz. Kapsamı ihtiyacınıza göre birlikte belirleriz.</p>
+</div>
+<div class="grid g-auto">
+{% for s in services %}<article class="card">{{ icon(s.icon) }}<h3 class="h3">{% if s.live %}<a href="/hizmetler/{{ s.slug }}/" style="color:inherit;text-decoration:none">{{ s.name }}</a>{% else %}{{ s.name }}{% endif %}</h3><p>{{ s.short }}</p>{% if s.live %}<p><a href="/hizmetler/{{ s.slug }}/">Ayrıntılı bilgi →</a></p>{% endif %}</article>
+{% endfor %}
+</div>
+</div></section>
+
+<section class="section-tight"><div class="wrap">
+<div class="band">
+{{ picture('operasyon-merkezi', 'Deniz manzaralı açık ofiste kulaklıkla çalışan müşteri temsilcileri', cls='', sizes='100vw') }}
+<div class="txt">
+<span class="eyebrow">İzmir operasyon merkezi</span>
+<h2 class="h2" style="font-size:clamp(26px,3vw,38px)">Gece, gündüz, hafta sonu ve bayramda hattınız açık.</h2>
+<p>7/24 çalışan ekibimiz gelen talepleri saniyeler içinde karşılar.</p>
+</div>
+</div>
+</div></section>
+
+<section class="section bg-soft" id="sektorler"><div class="wrap">
+<div class="head"><span class="eyebrow">Sektörler</span><h2 class="h2">Sektörünüzün dilini bilen bir ekip</h2><p class="sub">Her sektörün çağrı akışı, mevzuatı ve hassasiyetleri farklıdır. Temsilcilerimizi işinize özel konuşma akışı ve eğitimle hazırlarız.</p></div>
+<div class="tabs" role="tablist" aria-label="Sektör seçimi">
+{% for s in home_sectors %}<button class="tab" role="tab" id="tab-{{ s.id }}" aria-controls="panel-{{ s.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}"{% if not loop.first %} tabindex="-1"{% endif %} type="button">{{ s.name }}</button>{% endfor %}
+</div>
+{% for s in home_sectors %}
+<div class="panel" role="tabpanel" id="panel-{{ s.id }}" aria-labelledby="tab-{{ s.id }}"{% if not loop.first %} hidden{% endif %}>
+<div>
+{{ picture(s.img, s.alt, cls='', sizes='(max-width: 900px) 100vw, 560px') }}
+<span class="who">{{ s.who }}</span>
+<h3>{{ s.title }}</h3>
+<p class="sub" style="font-size:16px">{{ s.text }}</p>
+<div class="note">{{ icon('shield', size=22) }}<span>{{ s.note }}</span></div>
+{% if s.url %}<p><a class="btn btn-ghost btn-sm" href="{{ s.url }}">{{ s.link_text }}</a></p>{% endif %}
+</div>
+<div><b>Üstlendiğimiz işler</b><ul class="tasks">{% for it in s['items'] %}<li>{{ check() }}<span>{{ it }}</span></li>{% endfor %}</ul></div>
+</div>
+{% endfor %}
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="head"><span class="eyebrow">Örnek akış</span><h2 class="h2">Bir test sürüşü talebi, baştan sona</h2><p class="sub">Bir otomotiv bayisinin web sitesinden gelen talep bizde böyle ilerler. Aynı disiplini hastane randevusundan otel rezervasyonuna kadar her akışa uyguluyoruz.</p></div>
+<ol class="steps">
+<li><span class="n">1</span><h3>Talep gelir</h3><p>Web formu, telefon ya da kampanya üzerinden gelen test sürüşü talebi CRM'e kaydedilir.</p></li>
+<li><span class="n">2</span><h3>Hızlı dönüş</h3><p>Temsilcimiz müşteriyi saniyeler içinde arar; model ve uygun saat tercihini alır.</p></li>
+<li><span class="n">3</span><h3>Takvime işlenir</h3><p>Randevu bayinin takvimine ve satış danışmanına aktarılır.</p></li>
+<li><span class="n">4</span><h3>Teyit edilir</h3><p>Bir gün önce arama ya da mesajla teyit alınır; müşteri gelemeyecekse yeni saat planlanır.</p></li>
+<li><span class="n last">5</span><h3>Sonuç raporlanır</h3><p>Sürüş sonrası memnuniyet araması yapılır; tüm adımlar raporunuza yansır.</p></li>
+</ol>
+</div></section>
+
+<section class="section bg-dark" id="calisma"><div class="wrap">
+<div class="split" style="align-items:flex-start;gap:48px">
+<div><span class="eyebrow">Nasıl çalışırız</span><h2 class="h2">Devir sürecini biz yönetiriz, siz sonuçları izlersiniz</h2><p class="sub" style="margin-top:16px">Hizmet seviyesi hedefleri (cevaplama süresi, kaçan çağrı oranı, ilk temasta çözüm) sözleşmede birlikte belirlenir ve düzenli olarak raporlanır.</p></div>
+<ol class="rows">
+<li><span class="n">01</span><div><b>Keşif ve analiz</b><span>Çağrı hacminizi, saatlere göre dağılımını, süreçlerinizi ve hedeflerinizi inceleriz.</span></div></li>
+<li><span class="n">02</span><div><b>Kurulum ve eğitim</b><span>Konuşma akışı, karşılama anonsu, sistem entegrasyonu ve markanıza özel temsilci eğitimi. Standart kurulum 10 iş gününde tamamlanır.</span></div></li>
+<li><span class="n">03</span><div><b>Pilot dönem</b><span>Sınırlı hacimle başlar, kalite dinlemeleriyle akışı birlikte netleştiririz.</span></div></li>
+<li><span class="n">04</span><div><b>Tam operasyon ve raporlama</b><span>Günlük ve aylık raporlar, düzenli değerlendirme toplantıları ve sürekli iyileştirme.</span></div></li>
+</ol>
+</div>
+<h3 style="font-size:24px;font-weight:800;margin:56px 0 20px">Çalışma modelleri</h3>
+<div class="grid g-auto">
+<div class="model"><b>Size ayrılmış ekip</b><p>Yalnızca markanız için çalışan temsilciler ve takım lideri. Yüksek ve düzenli hacim için.</p></div>
+<div class="model"><b>Paylaşımlı ekip</b><p>Değişken veya düşük hacim için çağrı ya da saat bazlı esnek model.</p></div>
+<div class="model"><b>Proje bazlı</b><p>Kampanya, lansman veya dönemsel yoğunluk için süreli operasyon.</p></div>
+</div>
+</div></section>
+
+<section class="section" id="neden"><div class="wrap split">
+<div>{{ picture('ekip-egitim', 'Takım liderinin temsilcilere performans ekranı önünde bilgi verdiği eğitim toplantısı') }}</div>
+<div>
+<span class="eyebrow">Neden Karelima</span>
+<h2 class="h2">Büyük çağrı merkezlerinin altyapısı, butik bir ekibin ilgisi</h2>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:24px">
+<div><b>Tek muhatap</b><p class="sub" style="font-size:15px;margin-top:6px">Projenizi baştan sona bilen bir takım lideriyle çalışırsınız; sorumluluk dağılmaz.</p></div>
+<div><b>Markanıza özel eğitim</b><p class="sub" style="font-size:15px;margin-top:6px">Temsilcilerimiz ürününüzü, kampanyalarınızı ve kurum dilinizi öğrenmeden hatta çıkmaz.</p></div>
+<div><b>Hızlı ölçeklenme</b><p class="sub" style="font-size:15px;margin-top:6px">Kampanya ve sezon dönemlerinde ekibi kısa sürede büyütür, sakin dönemde küçültürüz.</p></div>
+<div><b>Satışta kanıtlanmış deneyim</b><p class="sub" style="font-size:15px;margin-top:6px">Telekom iş ortaklarımız için yüksek hacimli abonelik satışını her gün kendi ekibimizle yürütüyoruz.</p></div>
+</div>
+<p class="sub" style="font-size:15px;margin-top:20px">İzmir'deki operasyon merkezimizi ziyaret edip ekibimizle yerinde tanışabilirsiniz.</p>
+</div>
+</div></section>
+
+<section class="section bg-soft" id="guvenlik"><div class="wrap">
+<div class="head"><span class="eyebrow">Teknoloji ve güvenlik</span><h2 class="h2">Müşteri verileriniz güvende, her görüşme kayıt altında</h2><p class="sub">Kendi CRM altyapımızla her temas kayıt altına alınır; sizin sistemlerinizle de entegre çalışabiliriz.</p></div>
+<div class="grid g-4">
+<div class="card"><b>Karelima CRM</b><p>Çağrı geçmişi, randevu ve sonuç tek kayıtta.</p></div>
+<div class="card"><b>Entegrasyon</b><p>Randevu sisteminiz, CRM'iniz veya web formlarınızla API üzerinden veri alışverişi.</p></div>
+<div class="card"><b>Çağrı kaydı ve kalite</b><p>Görüşmeler kaydedilir; kalite ekibi düzenli dinleme ve puanlama yapar.</p></div>
+<div class="card"><b>KVKK ve gizlilik</b><p>Veri işleme sözleşmesi, yetki bazlı erişim, temsilci gizlilik taahhütleri ve saklama süreleri.</p></div>
+</div>
+</div></section>
+
+<section class="section-tight"><div class="wrap partner">
+<div style="flex:1 1 460px"><span class="eyebrow">İş ortaklarımız</span><p class="sub">Digitürk ve Türksat'ın satış iş ortağıyız. Bireysel abonelik başvuruları için iş ortaklarımız sayfasını ziyaret edin.</p></div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center"><span class="pill">Digitürk</span><span class="pill">Türksat</span><a href="/is-ortaklarimiz/" style="font-weight:700">İş ortaklarımız →</a></div>
+</div></section>
+
+<section class="section" style="border-top:1px solid var(--line)"><div class="wrap split" style="align-items:flex-start">
+<div style="flex:1 1 320px"><span class="eyebrow">Sık sorulanlar</span><h2 class="h2">Aklınızdaki sorular</h2></div>
+<div style="flex:2 1 560px">{{ faq(home_faq) }}</div>
+</div></section>
+
+{{ cta() }}
+{% endblock %}

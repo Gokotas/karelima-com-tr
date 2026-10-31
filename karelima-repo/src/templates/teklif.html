@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% from "macros.html" import check, crumbs %}
+{% block content %}
+<section class="page-hero"><div class="wrap">
+{{ crumbs(page.crumbs) }}
+<div class="split" style="align-items:flex-start;gap:48px">
+<div style="flex:1 1 380px">
+<span class="eyebrow">Teklif alın</span>
+<h1 class="h1" style="font-size:clamp(32px,4vw,46px)">Çağrı merkezi ihtiyacınızı anlatın, teklifimizi hazırlayalım</h1>
+<p class="answer">Formdaki bilgiler ilk görüşmeyi kısaltır. Talebiniz bize ulaştığında ekibimiz sizi arar; ekip büyüklüğü, süre ve fiyat önerisini yazılı olarak iletir.</p>
+<ul class="checks" style="margin-top:24px">
+<li>{{ check() }}<span>Taahhütsüz ilk görüşme ve kapsam analizi</span></li>
+<li>{{ check() }}<span>Pilot dönemle başlama imkânı</span></li>
+<li>{{ check() }}<span>Standart kurulum 10 iş gününde</span></li>
+<li>{{ check() }}<span>Verileriniz KVKK kapsamında yalnızca teklif süreci için işlenir</span></li>
+</ul>
+<div class="card-soft" style="margin-top:28px;background:#fff"><span class="sub" style="font-size:14px">Telefonla görüşmek isterseniz</span><p style="margin-top:4px"><a href="tel:+908504803873" data-ev="phone_click" style="font-size:22px;font-weight:800;text-decoration:none;color:var(--ink)">0850 480 38 73</a></p><p style="margin-top:12px;font-size:14px">Bireysel Digitürk veya Türksat başvurusu için bu formu değil, <a href="/is-ortaklarimiz/">iş ortaklarımız sayfasını</a> kullanın.</p></div>
+</div>
+<form class="form" id="teklif-form" style="flex:1 1 560px" novalidate data-endpoint="{{ site.form_endpoint }}">
+<div class="row">
+<div class="field"><label for="firma">Firma adı *</label><input id="firma" name="firma" required autocomplete="organization"></div>
+<div class="field"><label for="ad">Ad soyad *</label><input id="ad" name="ad_soyad" required autocomplete="name"></div>
+<div class="field"><label for="tel">Telefon *</label><input id="tel" name="telefon" type="tel" required autocomplete="tel" inputmode="tel" placeholder="05XX XXX XX XX"></div>
+<div class="field"><label for="eposta">Kurumsal e-posta *</label><input id="eposta" name="eposta" type="email" required autocomplete="email"></div>
+</div>
+<fieldset><legend class="legend">İhtiyacınız olan hizmet *</legend>
+<div class="opts">{% for s in services %}<label class="opt"><input type="checkbox" name="hizmet" value="{{ s.name }}"{% if loop.index==2 %} checked{% endif %}><span>{{ s.name }}</span></label>{% endfor %}<label class="opt"><input type="checkbox" name="hizmet" value="Diğer"><span>Diğer</span></label></div>
+</fieldset>
+<div class="field"><label for="sektor">Sektörünüz *</label><select id="sektor" name="sektor" required><option value="">Seçiniz</option>{% for s in sectors_all %}<option>{{ s }}</option>{% endfor %}<option>Diğer</option></select></div>
+<div class="row">
+<div class="field"><label for="hacim">Tahmini aylık çağrı hacmi</label><select id="hacim" name="hacim"><option value="">Seçiniz</option><option>1.000'den az</option><option>1.000 – 5.000</option><option>5.000 – 20.000</option><option>20.000'den fazla</option><option>Henüz bilmiyorum</option></select></div>
+<div class="field"><label for="zaman">Ne zaman başlamak istiyorsunuz?</label><select id="zaman" name="baslangic"><option value="">Seçiniz</option><option>Hemen</option><option>1 ay içinde</option><option>1–3 ay içinde</option><option>Sadece araştırıyorum</option></select></div>
+</div>
+<div class="field"><label for="mesaj">Kısaca projeniz</label><textarea id="mesaj" name="mesaj" rows="4" placeholder="Hangi hattı devretmek istiyorsunuz, çalışma saatleri, kullandığınız randevu ya da CRM sistemi vb."></textarea></div>
+<input class="hp" type="text" name="web_sitesi" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label class="consent"><input type="checkbox" name="kvkk" required><span><a href="/kvkk-aydinlatma-metni/" target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>'ni okudum. Teklif hazırlanması amacıyla benimle iletişime geçilmesini kabul ediyorum. *</span></label>
+<div class="form-msg" id="form-msg" role="status" hidden></div>
+<button class="btn btn-primary" type="submit" style="width:100%">Teklif talebimi gönder</button>
+</form>
+</div>
+</div></section>
+{% endblock %}
