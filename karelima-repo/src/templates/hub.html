@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import icon, crumbs, cta %}
+{% from "macros.html" import icon, crumbs, cta with context %}
 {% block content %}
 <section class="page-hero" style="padding-bottom:56px"><div class="wrap">
 {{ crumbs(page.crumbs) }}

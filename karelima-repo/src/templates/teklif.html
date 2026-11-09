@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import check, crumbs %}
+{% from "macros.html" import check, crumbs with context %}
 {% block content %}
 <section class="page-hero"><div class="wrap">
 {{ crumbs(page.crumbs) }}
@@ -14,7 +14,7 @@
 <li>{{ check() }}<span>Standart kurulum 10 iş gününde</span></li>
 <li>{{ check() }}<span>Verileriniz KVKK kapsamında yalnızca teklif süreci için işlenir</span></li>
 </ul>
-<div class="card-soft" style="margin-top:28px;background:#fff"><span class="sub" style="font-size:14px">Telefonla görüşmek isterseniz</span><p style="margin-top:4px"><a href="tel:+908504803873" data-ev="phone_click" style="font-size:22px;font-weight:800;text-decoration:none;color:var(--ink)">0850 480 38 73</a></p><p style="margin-top:12px;font-size:14px">Bireysel Digitürk veya Türksat başvurusu için bu formu değil, <a href="/is-ortaklarimiz/">iş ortaklarımız sayfasını</a> kullanın.</p></div>
+<div class="card-soft" style="margin-top:28px;background:#fff"><span class="sub" style="font-size:14px">Telefonla görüşmek isterseniz</span><p style="margin-top:4px"><a href="tel:{{ site.phone_href }}" data-ev="phone_click" style="font-size:22px;font-weight:800;text-decoration:none;color:var(--ink)">{{ site.phone }}</a></p><p style="margin-top:12px;font-size:14px">Bireysel Digitürk veya Türksat başvurusu için bu formu değil, <a href="/is-ortaklarimiz/">iş ortaklarımız sayfasını</a> kullanın.</p></div>
 </div>
 <form class="form" id="teklif-form" style="flex:1 1 560px" novalidate data-endpoint="{{ site.form_endpoint }}">
 <div class="row">

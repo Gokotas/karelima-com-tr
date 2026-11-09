@@ -28,7 +28,7 @@
 <section class="section bg-dark"><div class="wrap cta">
 <h2 class="h2">{{ title }}</h2>
 <p class="sub" style="max-width:620px">{{ text }}</p>
-<div class="actions"><a class="btn btn-primary" href="/teklif-al/" data-ev="cta_click">Teklif Alın</a><a class="btn btn-line-light" href="tel:+908504803873" data-ev="phone_click">0850 480 38 73</a></div>
+<div class="actions"><a class="btn btn-primary" href="/teklif-al/" data-ev="cta_click">Teklif Alın</a><a class="btn btn-line-light" href="tel:{{ site.phone_href }}" data-ev="phone_click">{{ site.phone }}</a></div>
 </div></section>
 {%- endmacro %}
 {% macro faq(items) -%}
