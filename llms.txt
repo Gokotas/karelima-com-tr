@@ -1,0 +1,44 @@
+# Karelima
+
+> Karelima Bilişim Hizmetleri San. ve Tic. A.Ş., 2021'de İzmir'de kurulan, 20'den fazla kişilik ekiple 7/24 kurumsal çağrı merkezi hizmeti veren bir firmadır. Gelen çağrı yönetimi, randevu ve rezervasyon, dış arama ve telesatış, memnuniyet aramaları, WhatsApp desteği ve back office hizmetleri sunar.
+
+- Adres: Çınarlı Mah. Şehit Polis Fethi Sekin Cad. No:3 SUNUCU Plaza Kat:14 D:1405 Konak / İzmir
+- Telefon: 0534 374 76 92 · E-posta: info@karelima.com
+- Kuruluş: 9 Eylül 2021 (İzmir Ticaret Sicili) · VKN 5241371599
+- Hizmet saatleri: 7 gün 24 saat · Kurulum süresi: 10 iş günü · Talepler saniyeler içinde geri aranır
+- Kendi CRM altyapısı: Karelima CRM
+- İş ortaklıkları: Digitürk ve Türksat (bireysel abonelik: https://www.karelima.com)
+
+## Sayfalar
+- [Ana sayfa](https://www.karelima.com.tr/): Hizmetler, sektörler, çalışma modeli, sık sorulanlar
+- [Hizmetler](https://www.karelima.com.tr/hizmetler/)
+- [Gelen çağrı yönetimi](https://www.karelima.com.tr/hizmetler/gelen-cagri-yonetimi/)
+- [Randevu ve rezervasyon yönetimi](https://www.karelima.com.tr/hizmetler/randevu-ve-rezervasyon-yonetimi/): Randevu alma, hatırlatma, teyit ve iptal yönetimi tek ekipte. Klinik, bayi, servis, okul ve oteller için 7/24 randevu hattı; kurulum 10 iş günü.
+- [Dış arama ve telesatış](https://www.karelima.com.tr/hizmetler/dis-arama-ve-telesatis/): Kampanya duyurusu, yenileme, çapraz satış ve geri kazanım aramaları. İYS ve KVKK uyumlu dış arama, her görüşme kayıtlı, günlük sonuç raporu.
+- [Sanal sekreter ve çağrı karşılama](https://www.karelima.com.tr/hizmetler/sanal-sekreter-ve-cagri-karsilama/): Telefonlarınız şirketinizin adıyla karşılansın: sanal sekreter, mesaj alma, aktarma ve mesai dışı hat. Numaranız değişmez, 7/24 hizmet.
+- [Memnuniyet ve anket aramaları](https://www.karelima.com.tr/hizmetler/memnuniyet-ve-anket-aramalari/): Satış ve hizmet sonrası memnuniyet, NPS ve geri bildirim aramaları. Şikâyetler aynı gün iletilir, sonuçlar düzenli raporlanır. 7/24 ekip.
+- [Lead ve talep yönetimi](https://www.karelima.com.tr/hizmetler/lead-ve-talep-yonetimi/): Web formu, Google ve Meta reklamlarından gelen talepleri saniyeler içinde arıyoruz. Ön eleme, randevu, tekrar deneme ve kampanya bazlı rapor.
+- [WhatsApp ve canlı destek](https://www.karelima.com.tr/hizmetler/whatsapp-ve-canli-destek/): WhatsApp, canlı destek ve e-posta taleplerinizi telefonla aynı ekip ve aynı kayıtla yönetiyoruz. 7/24 yazılı müşteri hizmetleri, hızlı ilk yanıt.
+- [Back office operasyonları](https://www.karelima.com.tr/hizmetler/back-office-operasyonlari/): Veri girişi, başvuru ve sipariş takibi, evrak kontrolü, CRM güncelleme gibi arka plan işlerini çağrı süreciyle birlikte yürütüyoruz. Kayıtlı, raporlu.
+- [Teknik destek hattı](https://www.karelima.com.tr/hizmetler/teknik-destek-hatti/): Birinci seviye teknik destek, arıza kaydı, adım adım çözüm yönlendirmesi ve uzman ekibe aktarım. Kullanıcılarınız 7/24 destek bulur, her kayıt raporlanır.
+- [Ödeme hatırlatma](https://www.karelima.com.tr/hizmetler/odeme-hatirlatma/): Vadesi yaklaşan ve geciken ödemeler için kibar, kayıtlı ve mevzuata uygun hatırlatma aramaları. Müşteri ilişkisini koruyarak tahsilat sürecini destekliyoruz.
+- [Sektörler](https://www.karelima.com.tr/sektorler/)
+- [Hastane çağrı merkezi ve randevu yönetimi](https://www.karelima.com.tr/sektorler/saglik/hastane-cagri-merkezi/)
+- [Klinik ve diş hekimliği çağrı merkezi](https://www.karelima.com.tr/sektorler/saglik/klinik-ve-dis-hekimligi-cagri-merkezi/): Diş, estetik, göz ve fizik tedavi klinikleri için 7/24 randevu hattı: randevu, seans hatırlatma, teyit ve memnuniyet aramaları. KVKK uyumlu süreç.
+- [Bayi ve servis çağrı merkezi](https://www.karelima.com.tr/sektorler/otomotiv/bayi-ve-servis-cagri-merkezi/): Test sürüşü planlama, servis randevusu, bakım hatırlatma ve satış sonrası memnuniyet aramaları. Bayiler için 7/24 çağrı merkezi, kurulum 10 iş günü.
+- [E-ticaret çağrı merkezi](https://www.karelima.com.tr/sektorler/e-ticaret-ve-perakende/e-ticaret-cagri-merkezi/): Sipariş, kargo, iade ve değişim çağrılarınızı telefon, WhatsApp ve e-postadan karşılıyoruz. Kampanya dönemlerinde ek kapasite, 7/24 hizmet.
+- [Sigorta çağrı merkezi](https://www.karelima.com.tr/sektorler/sigorta/sigorta-cagri-merkezi/): Poliçe yenileme hatırlatma, teklif talebi karşılama, hasar bilgilendirme ve taksit hatırlatma aramaları. Görüşmeler kayıtlı, düzenli rapor.
+- [Emlak ve konut projesi çağrı merkezi](https://www.karelima.com.tr/sektorler/gayrimenkul/emlak-ve-konut-projesi-cagri-merkezi/): İlan ve proje taleplerini aynı gün arıyor, ön eleme yapıp satış ofisi ve örnek daire randevusu veriyoruz. Lansman dönemlerinde ek kapasite.
+- [Otel rezervasyon çağrı merkezi](https://www.karelima.com.tr/sektorler/turizm-ve-otelcilik/otel-rezervasyon-cagri-merkezi/): Otelinizin rezervasyon hattını 7/24 karşılıyoruz: rezervasyon, değişiklik, erken rezervasyon, konaklama öncesi teyit ve memnuniyet aramaları.
+- [Okul ve kurs çağrı merkezi](https://www.karelima.com.tr/sektorler/egitim/okul-ve-kurs-cagri-merkezi/): Kayıt döneminde aday öğrenci ve veli taleplerini karşılıyor, kampüs ziyareti ve kayıt görüşmesi randevusu veriyoruz. Dönemsel esnek ekip.
+- [Telekom ve abonelik çağrı merkezi](https://www.karelima.com.tr/sektorler/telekom-ve-abonelik/telekom-ve-abonelik-cagri-merkezi/): Yeni abonelik satışı, başvuru teyidi, kurulum takibi ve taahhüt bitimi aramaları. Digitürk ve Türksat iş ortaklığıyla her gün sahada kanıtlanmış ekip.
+- [Yazılım firmaları için çağrı merkezi](https://www.karelima.com.tr/sektorler/teknoloji-ve-yazilim/yazilim-firmalari-icin-cagri-merkezi/): Birinci seviye destek, demo randevusu, deneme kullanıcısı aramaları ve abonelik yenileme. Yazılım ve SaaS firmaları için 7/24 müşteri hizmetleri.
+- [Teknik servis çağrı merkezi](https://www.karelima.com.tr/sektorler/teknik-servis/teknik-servis-cagri-merkezi/): Arıza kaydı, servis randevusu, periyodik bakım hatırlatma ve servis sonrası memnuniyet. Kombi, klima ve beyaz eşya servisleri için 7/24 hat.
+- [Restoran ve franchise çağrı merkezi](https://www.karelima.com.tr/sektorler/restoran-ve-franchise/restoran-siparis-ve-franchise-cagri-merkezi/): Zincir restoranlar için merkezi sipariş hattı, şikâyet ve şube memnuniyeti aramaları; franchise merkezleri için bayilik başvurusu karşılama.
+- [GES ve enerji firmaları çağrı merkezi](https://www.karelima.com.tr/sektorler/enerji/ges-ve-enerji-firmalari-cagri-merkezi/): Güneş enerjisi (GES) taleplerini arıyor, keşif randevusu veriyor, teklif takibi yapıyoruz. Enerji tedarikçileri için abone hizmetleri hattı.
+- [Lojistik ve kargo çağrı merkezi](https://www.karelima.com.tr/sektorler/lojistik-ve-kargo/lojistik-ve-kargo-cagri-merkezi/): Gönderi sorgulama, teslimat randevusu, hasar ve şikâyet kaydı. Kargo, nakliye ve kurye firmaları için 7/24 müşteri hizmetleri hattı.
+- [Finans çağrı merkezi](https://www.karelima.com.tr/sektorler/finans/finans-cagri-merkezi/): Ödeme kuruluşları, finansman ve leasing şirketleri için bilgi hattı, başvuru takibi, ödeme hatırlatma ve memnuniyet aramaları. Kayıtlı ve denetlenebilir süreç.
+- [Çağrı merkezi hizmeti fiyatları rehberi](https://www.karelima.com.tr/rehber/cagri-merkezi-hizmeti-fiyatlari/)
+- [Hakkımızda](https://www.karelima.com.tr/hakkimizda/)
+- [Teklif alın](https://www.karelima.com.tr/teklif-al/)
+- [İletişim](https://www.karelima.com.tr/iletisim/)
