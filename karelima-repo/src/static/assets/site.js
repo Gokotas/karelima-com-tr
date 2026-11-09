@@ -163,7 +163,7 @@
         fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) })
           .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
           .then(function (j) { if (!j || !j.ok) throw new Error((j && j.error) || 'hata'); done(); })
-          .catch(function () { show('Gönderilemedi. Lütfen 0850 480 38 73 numarasından bize ulaşın.', false); })
+          .catch(function () { show('Gönderilemedi. Lütfen 0534 374 76 92 numarasından bize ulaşın.', false); })
           .then(function () { button.disabled = false; });
       } else {
         var body = Object.keys(data).map(function (k) { return k + ': ' + data[k]; }).join('\n');
