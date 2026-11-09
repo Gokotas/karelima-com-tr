@@ -3,9 +3,9 @@
 
 SITE = dict(
     url='https://www.karelima.com.tr', name='Karelima', legal_name='Karelima Bilişim Hizmetleri San. ve Tic. A.Ş.',
-    phone='0850 480 38 73', phone_href='+908504803873', email='info@karelima.com',
+    phone='0534 374 76 92', phone_href='+905343747692', phone_intl='+90 534 374 76 92', email='info@karelima.com',
     address='Çınarlı Mah. Şehit Polis Fethi Sekin Cad. No:3 SUNUCU Plaza Kat:14 D:1405 Konak / İzmir',
-    vkn='5241371599', mersis='0524137159900001', year=2026, version='3', form_endpoint='https://script.google.com/macros/s/AKfycbyS160TNjcYiTI1-2C7KHXS9i8D0tOm4HPpC9TF6vCw3p4pbjXaV797jwkEtctmzmo/exec', gtm='GTM-KXPG2N98',
+    vkn='5241371599', mersis='0524137159900001', year=2026, version='4', form_endpoint='https://script.google.com/macros/s/AKfycbyS160TNjcYiTI1-2C7KHXS9i8D0tOm4HPpC9TF6vCw3p4pbjXaV797jwkEtctmzmo/exec', gtm='GTM-KXPG2N98',
     founding='2021-09-09', partner_site='https://www.karelima.com',
 )
 

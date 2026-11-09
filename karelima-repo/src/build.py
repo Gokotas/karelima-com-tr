@@ -20,13 +20,13 @@ ORG = {
     'name': 'Karelima', 'legalName': S['legal_name'], 'url': S['url'] + '/', 'logo': S['url'] + '/favicon.svg',
     'image': S['url'] + '/assets/img/operasyon-merkezi-1400.jpg',
     'description': 'İzmir merkezli, 7/24 hizmet veren kurumsal çağrı merkezi. Gelen çağrı yönetimi, randevu ve rezervasyon, dış arama, memnuniyet aramaları ve back office hizmetleri.',
-    'foundingDate': S['founding'], 'taxID': S['vkn'], 'telephone': '+90 850 480 38 73', 'email': S['email'],
+    'foundingDate': S['founding'], 'taxID': S['vkn'], 'telephone': S['phone_intl'], 'email': S['email'],
     'numberOfEmployees': {'@type': 'QuantitativeValue', 'minValue': 20},
     'address': {'@type': 'PostalAddress', 'streetAddress': 'Çınarlı Mah. Şehit Polis Fethi Sekin Cad. No:3 SUNUCU Plaza Kat:14 D:1405', 'addressLocality': 'Konak', 'addressRegion': 'İzmir', 'addressCountry': 'TR'},
     'areaServed': {'@type': 'Country', 'name': 'Türkiye'},
     'openingHoursSpecification': {'@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 'opens': '00:00', 'closes': '23:59'},
     'knowsLanguage': 'tr', 'sameAs': [S['partner_site']],
-    'contactPoint': {'@type': 'ContactPoint', 'telephone': '+90 850 480 38 73', 'contactType': 'sales', 'areaServed': 'TR', 'availableLanguage': 'Turkish', 'hoursAvailable': 'Mo-Su 00:00-23:59'},
+    'contactPoint': {'@type': 'ContactPoint', 'telephone': S['phone_intl'], 'contactType': 'sales', 'areaServed': 'TR', 'availableLanguage': 'Turkish', 'hoursAvailable': 'Mo-Su 00:00-23:59'},
 }
 WEBSITE = {'@context': 'https://schema.org', '@type': 'WebSite', '@id': S['url'] + '/#website', 'url': S['url'] + '/', 'name': 'Karelima', 'inLanguage': 'tr-TR', 'publisher': {'@id': ORG_ID}}
 
@@ -40,7 +40,7 @@ def faq_ld(items):
 
 def service_ld(name, desc, path, audience=None):
     d = {'@context': 'https://schema.org', '@type': 'Service', 'name': name, 'description': desc, 'url': S['url'] + path,
-         'serviceType': 'Çağrı merkezi hizmeti', 'provider': {'@id': ORG_ID}, 'areaServed': {'@type': 'Country', 'name': 'Türkiye'}, 'availableChannel': {'@type': 'ServiceChannel', 'servicePhone': '+90 850 480 38 73'}}
+         'serviceType': 'Çağrı merkezi hizmeti', 'provider': {'@id': ORG_ID}, 'areaServed': {'@type': 'Country', 'name': 'Türkiye'}, 'availableChannel': {'@type': 'ServiceChannel', 'servicePhone': S['phone_intl']}}
     if audience: d['audience'] = {'@type': 'BusinessAudience', 'name': audience}
     return d
 
@@ -183,7 +183,7 @@ simple('/hakkimizda/', 'Hakkımızda | Karelima Bilişim, İzmir Çağrı Merkez
        dict(eyebrow='Hakkımızda', h1='Karelima Bilişim hakkında', answer='Karelima Bilişim Hizmetleri San. ve Tic. A.Ş., 2021\'de İzmir\'de kuruldu. 20\'den fazla kişilik ekibiyle 7 gün 24 saat kurumsal çağrı merkezi, satış ve müşteri deneyimi hizmeti veriyor.', body=T.about(S), cta=True),
        'Hakkımızda', section='kurumsal', priority='0.7', extra_ld=[ORG])
 simple('/iletisim/', 'İletişim | Karelima Çağrı Merkezi, İzmir',
-       'Karelima ile iletişime geçin: 0850 480 38 73, info@karelima.com. Çınarlı Mah. SUNUCU Plaza, Konak / İzmir. 7/24 hizmet.',
+       'Karelima ile iletişime geçin: ' + S['phone'] + ', info@karelima.com. Çınarlı Mah. SUNUCU Plaza, Konak / İzmir. 7/24 hizmet.',
        dict(eyebrow='İletişim', h1='Bize ulaşın', answer='Çağrı merkezi hizmeti için teklif almak ya da operasyon merkezimizi ziyaret etmek için bize ulaşabilirsiniz. 7 gün 24 saat hizmet veriyoruz.', body=T.contact(S), cta=False),
        'İletişim', section='iletisim', extra_ld=[ORG])
 simple('/kariyer/', 'Kariyer: Müşteri Temsilcisi İş İlanları İzmir | Karelima',
